@@ -1,0 +1,30 @@
+import numpy as np
+from numpy import asarray
+from PIL import Image
+import matplotlib.pyplot as plt
+import sys
+image = Image.open('/20161207-112255-0.jpg')
+min = sys.maxsize
+max = -sys.maxsize
+new_image = image.resize((224,224))    
+np_image = asarray(image)
+
+if min > np_image.min():
+        min = np_image.min()
+if max < np_image.max():
+        max = np_image.max()    
+
+np_image = np_image.astype('float32')
+print("BEGINNING PIXEL VALUES", np_image)
+# convert from integers to floats
+pixels = pixels.astype('float32')
+# normalize to the range 0-1
+pixels /= 255.0
+# confirm the normalization
+print('Min: %.3f, Max: %.3f' % (pixels.min(), pixels.max()))
+np_image -= min
+np_image /= (max - min)
+
+print('Min: %.3f, Max: %.3f' % (np_image.min(), np_image.max()))
+print(np_image)
+plt.imshow(np_image)

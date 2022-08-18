@@ -1,0 +1,23 @@
+import pandas as pd
+import pandas_datareader as pdr
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import pandas_datareader as pdr
+import matplotlib.pyplot as plt
+example = pd.read_csv('/content/Example Data.csv')
+example.head()
+from matplotlib import rcParams
+from matplotlib import pyplot as plt
+
+rcParams['figure.figsize'] = 10,6
+plt.plot(example.YOLOv4)
+plt.plot(example.YOLOv3)
+plt.grid(True, color='k', linestyle=':')
+plt.title("YOLOv4 & YOLOv3 accuracy and Timetaken")
+plt.xlabel("Timetaken")
+plt.ylabel("accuracy")
+plt.ylim(0, 100)
+plt.yticks([0,10,20,30,40,50,60,70,80,90,100])
+plt.style.use('fivethirtyeight')
+plt.legend(loc=2);
